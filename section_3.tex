@@ -1,0 +1,50 @@
+\section{Amenazas Cibernéticas en Comunicaciones de Exploración Profunda}
+
+Desplegar infraestructura NB-IoT en condiciones extremas expone fisuras que los entornos controlados de laboratorio rara vez revelan.
+
+\subsection{3.1 Escenarios de Despliegue Remoto}
+
+Sensores dispersos en océanos profundos, estaciones polares, minas subterráneas o selvas remotas operan bajo restricciones drásticas. La distancia a cualquier infraestructura de mantenimiento, las fluctuaciones ambientales extremas y la imposibilidad práctica de actualizaciones frecuentes convierten estos nodos en islas digitales vulnerables. 
+
+En tales contextos, los dispositivos deben transmitir datos críticos —temperatura, presión, composición química o actividad sísmica— durante años con una sola batería. La conectividad intermitente y la dependencia de enlaces de radio de largo alcance incrementan la superficie de ataque. Un adversario con acceso físico o capacidad de interceptación remota puede explotar estas condiciones con relativa facilidad. 
+
+Lo que complica aún más el panorama es que muchos de estos despliegues soportan aplicaciones de misión crítica donde la integridad y confidencialidad de los datos trascienden el valor económico inmediato.
+
+\subsection{3.2 Ataques de Eavesdropping y Harvest-Now-Decrypt-Later}
+
+Particularmente llamativo es el hecho de que la pasividad inherente al eavesdropping lo hace casi indetectable en entornos remotos. Un atacante solo necesita capturar el tráfico cifrado hoy para almacenarlo indefinidamente. 
+
+Cuando computadoras cuánticas escalables se vuelvan disponibles, algoritmos como Shor podrán comprometer las claves asimétricas usadas durante el establecimiento de sesión, mientras Grover acelerará ataques contra componentes simétricos. Este patrón harvest-now-decrypt-later adquiere especial gravedad en exploración profunda: datos capturados de un sensor submarino en 2025 podrían revelar información estratégica en 2035 o más tarde.
+
+Propuestas lattice-based para IoT han intentado abordar estas amenazas ofreciendo alternativas resistentes a ataques cuánticos, incluyendo esquemas de autenticación y transmisión segura adaptados a NB-IoT \cite{Althobaiti2021_QuantumResistant}. No obstante, cabe matizar que su implementación directa suele chocar con las limitaciones operativas reales de los módulos comerciales actuales.
+
+\begin{table}[t]
+\centering
+\caption{Análisis de Riesgos Cuánticos en Comunicaciones NB-IoT de Exploración Profunda}
+\label{tab:riesgos}
+\begin{tabular}{|l|l|l|l|}
+\hline
+\textbf{Amenaza} & \textbf{Escenario} & \textbf{Impacto Cuántico} & \textbf{Severidad} \\
+\hline
+Eavesdropping pasivo & Océano profundo, polar & Harvest-now-decrypt-later & Crítica \\
+\hline
+Ataque de repetición & Minas subterráneas & Rompimiento de autenticación & Alta \\
+\hline
+Side-channel (energía) & Entornos hostiles & Extracción de claves & Media-Alta \\
+\hline
+Onboarding comprometido & Despliegues masivos & Compromiso en masa & Crítica \\
+\hline
+Degradación por Grover & Tráfico simétrico & Reducción efectiva de seguridad & Alta \\
+\hline
+\end{tabular}
+\end{table}
+
+\subsection{3.3 Limitaciones de Recursos en Entornos Hostiles}
+
+Uno de los aspectos más frustrantes al intentar mitigar estas amenazas radica en las restricciones hardware. Módulos NB-IoT típicos cuentan con memoria RAM del orden de decenas de kilobytes, procesadores de baja frecuencia y presupuestos energéticos extremadamente ajustados. 
+
+Introducir primitivas post-cuánticas incrementa de forma notable el overhead computacional. Encuestas especializadas documentan que muchas implementaciones PQC actuales generan incrementos significativos en tiempo de ejecución, tamaño de paquetes y consumo de energía, factores que pueden resultar prohibitivos en escenarios remotos donde cada milijoule cuenta \cite{Liu2024_PQC_IoT}.
+
+En entornos hostiles esta tensión se agudiza. Temperaturas extremas afectan el rendimiento de los componentes, la interferencia electromagnética complica las transmisiones y cualquier overhead adicional reduce directamente la vida útil de la batería. Estas limitaciones no solo restringen las opciones de mitigación disponibles, sino que obligan a replantear arquitecturas de seguridad completas. 
+
+Las brechas identificadas aquí motivan el diseño de soluciones híbridas y selectivas que se presentarán más adelante, capaces de equilibrar protección cuántica con viabilidad operativa real.

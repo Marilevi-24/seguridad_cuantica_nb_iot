@@ -1,0 +1,29 @@
+\section{Conclusiones y Trabajos Futuros}
+
+Cerrar un estudio como este siempre deja una sensación agridulce. Se avanza en comprensión, pero queda claro cuánto terreno permanece inexplorado.
+
+\subsection{8.1 Conclusiones}
+
+Los resultados obtenidos confirman que la protección cuántica en NB-IoT no solo es deseable, sino técnicamente alcanzable con las tecnologías actuales. La arquitectura híbrida propuesta logra mantener resistencia post-cuántica mientras preserva un nivel operativo viable para escenarios de exploración profunda. 
+
+Siguiendo enfoques PQC-aware validados en plataformas NB-IoT \cite{Do2026_PQCAware}, demostramos que separar el plano de control (donde se concentra el costo computacional) del plano de datos (optimizado para eficiencia) constituye una estrategia efectiva. El overhead energético, aunque significativo durante el onboarding, se amortiza razonablemente y permite autonomías prácticas en la mayoría de casos estudiados. 
+
+Más allá de las métricas, el trabajo subraya un punto esencial: la migración hacia criptografía resistente a quantum debe ser inteligente y selectiva. Reemplazar todo por primitivas pesadas genera soluciones impracticables. Equilibrar, priorizar y adaptar, en cambio, abre caminos reales de implementación.
+
+\subsection{8.2 Limitaciones}
+
+Uno de los desafíos persistentes que surge al analizar estos sistemas radica en las inevitables concesiones. La penalización en vida útil de batería, cercana al 18\% en condiciones nominales, sigue representando un costo tangible que ciertos despliegues ultra-remotos podrían no tolerar sin fuentes de energía complementarias.
+
+La implementación actual depende de hardware comercial relativamente maduro, pero con limitaciones en memoria y potencia de procesamiento que obligaron a elegir versiones ligeras de los algoritmos (ML-KEM-512 y ML-DSA-44). Esto implica que el nivel de seguridad, aunque adecuado (NIST Nivel I), no alcanza los parámetros más conservadores disponibles. 
+
+Además, las pruebas se realizaron en entornos controlados y simulados que, pese a su fidelidad, no capturan todas las complejidades de despliegues reales a escala industrial. Factores como interferencias impredecibles, degradación a largo plazo de los dispositivos o ataques adaptativos sofisticados requieren validación adicional en campo.
+
+\subsection{8.3 Trabajos Futuros}
+
+Particularmente llamativo es el hecho de que, lejos de cerrar el tema, este estudio abre múltiples líneas prometedoras. La optimización fina de implementaciones PQC en hardware NB-IoT específico sigue siendo un área fértil, especialmente en técnicas de side-channel resistance y reducción de memoria \cite{Liu2024_PQC_IoT}.
+
+Entre las direcciones prioritarias destacan: la integración con mecanismos de Quantum Key Distribution asistidos por satélite para entornos de cobertura extrema; el desarrollo de esquemas adaptativos que ajusten dinámicamente el nivel de protección según el contexto operativo y la amenaza percibida; y la exploración de técnicas de compresión y precomputación para minimizar aún más el impacto en dispositivos de ultra-bajo consumo.
+
+También resulta prioritario avanzar en la estandarización. Propuestas concretas de extensiones a los protocolos 3GPP, incluyendo perfiles PQC-Lite para NB-IoT, podrían acelerar la adopción industrial. Finalmente, sería valioso realizar pruebas a largo plazo en despliegues reales —monitoreo oceánico o minería subterránea— para validar la durabilidad de las soluciones bajo estrés ambiental continuo.
+
+En resumen, aunque el camino hacia la seguridad cuántica plena en NB-IoT presenta obstáculos claros, los avances aquí documentados indican que estamos más cerca de soluciones prácticas de lo que parecía hace solo unos años. El verdadero desafío ahora radica en trasladar estos hallazgos desde el laboratorio hacia infraestructuras críticas del mundo real.

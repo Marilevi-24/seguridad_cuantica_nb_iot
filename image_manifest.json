@@ -1,0 +1,20 @@
+{
+    "fig1.png": {
+        "prompt_ia": "2D technical vector diagram, engineering schematic, flat design, minimalista, fondo blanco puro, colores azul cobalto #0047AB y gris técnico #4A4A4A, negro para líneas principales, sin sombras, sin gradientes, sin texto incrustado. Muestra arquitectura NB-IoT: capa de dispositivos/sensores en la parte inferior (nodos remotos en entorno de exploración profunda con íconos de sensor, antena), conectados vía flechas a eNodeB/base station, luego a EPC core network (MME, HSS, gateways), y finalmente a application servers en la nube. Incluir etiquetas limpias de capas pero como placeholders neutros, líneas de flujo de datos bidireccionales, iconos minimalistas de satélite opcional y zonas remotas."
+    },
+    "fig2.png": {
+        "prompt_ia": "2D technical vector diagram, engineering schematic, flat design, minimalista, fondo blanco puro, colores azul cobalto #0047AB y gris técnico #4A4A4A, negro para líneas y texto placeholders, sin sombras, sin gradientes, sin texto incrustado real. Diagrama de taxonomía PQC en forma de árbol o mindmap estructurado: nodo central 'Criptografía Post-Cuántica', ramas principales hacia Lattice-based (con subnodos Kyber, Dilithium), Code-based, Multivariate, Hash-based (SPHINCS+), Isogeny-based. Resaltar con color azul más intenso la categoría Lattice-based como más adecuada para NB-IoT. Incluir iconos minimalistas de escudo para seguridad y chip para dispositivos restringidos, flechas de comparación de performance y suitability."
+    },
+    "fig3.png": {
+        "prompt_ia": "2D technical vector diagram, engineering schematic, flat design, minimalista, fondo blanco puro, colores azul cobalto #0047AB y gris técnico #4A4A4A, negro para líneas y flechas, sin sombras, sin gradientes, sin texto incrustado. Arquitectura completa: lado izquierdo muestra dispositivos NB-IoT remotos (íconos minimalistas en entorno oceánico/minero), flechas hacia eNodeB, luego división clara entre Control Plane (cuadro azul con ML-KEM onboarding, candado PQC) y Data Plane (cuadro gris con protección ligera AES derivada). Conexión al EPC core (MME/HSS) y Application Server. Incluir flechas bidireccionales seguras, iconos de escudo cuántico y capas 3GPP."
+    },
+    "fig4.png": {
+        "prompt_ia": "2D technical vector diagram, engineering schematic, flat design, minimalista, fondo blanco puro, colores azul cobalto #0047AB y gris técnico #4A4A4A, negro para líneas y ejes, sin sombras, sin gradientes, sin texto incrustado. Gráfico de barras agrupadas comparando consumo energético (mJ) entre Baseline Clásico y Propuesta PQC para operaciones: Onboarding, Data Packet, Reauth. Incluir líneas de error, múltiples series para condiciones de temperatura (baja, nominal, alta). Ejes limpios con etiquetas técnicas, leyenda minimalista en gris."
+    },
+    "fig5.png": {
+        "prompt_ia": "2D technical vector diagram, engineering schematic, flat design, minimalista, fondo blanco puro, colores azul cobalto #0047AB y gris técnico #4A4A4A, negro para líneas y flechas, sin sombras, sin gradientes, sin texto incrustado. Diagrama de trade-offs: ejes comparando Seguridad Cuántica vs Overhead Energético vs Overhead Latencia vs Compatibilidad 3GPP. Posicionamiento de la propuesta actual (punto destacado) frente a enfoques clásicos, PQC uniformes y otras arquitecturas híbridas. Incluir flechas de compromiso y zonas de viabilidad práctica sombreadas sutilmente en gris."
+    },
+    "fig6.png": {
+        "prompt_ia": "2D technical vector diagram, engineering schematic, flat design, minimalista, fondo blanco puro, colores azul cobalto #0047AB y gris técnico #4A4A4A, negro para líneas y flechas, sin sombras, sin gradientes, sin texto incrustado. Diagrama resumen de conclusiones: timeline horizontal desde 'Estado Actual' hasta 'Futuro Post-Cuántico', con hitos clave de la arquitectura propuesta, ramas hacia limitaciones (íconos de batería y hardware) y flechas hacia trabajos futuros (optimización, QKD satelital, estandarización 3GPP). Incluir escudos de seguridad y sensores remotos minimalistas."
+    }
+}

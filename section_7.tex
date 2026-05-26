@@ -1,0 +1,29 @@
+\section{Discusión}
+
+Interpretar estos resultados obliga a mirar más allá de las cifras. La brecha entre teoría y despliegue real sigue siendo el terreno donde se deciden las soluciones viables.
+
+\subsection{7.1 Viabilidad Práctica}
+
+Uno de los interrogantes que más nos acompañó durante el desarrollo fue si el costo adicional justificaría realmente la ganancia en seguridad. Los datos sugieren que sí, aunque con matices importantes. 
+
+La arquitectura híbrida demostró ser operativa en condiciones que replican fielmente exploración profunda. El incremento energético, aunque notable durante el onboarding, se diluye en el ciclo de vida útil del dispositivo gracias a la baja frecuencia de estos eventos. Siguiendo análisis de trade-offs similares \cite{Do2026_PQCAware}, observamos que un ajuste razonable en el duty cycle o el aprovechamiento de cosecha energética puede compensar gran parte de la penalización, manteniendo autonomías superiores a cinco años en la mayoría de escenarios.
+
+No todo resulta sencillo. En condiciones extremas de temperatura y conectividad intermitente, la variabilidad aumenta y algunos nodos requirieron reintentos que consumieron recursos extras. Esto indica que la viabilidad práctica depende fuertemente del perfil específico de la aplicación. Para monitoreo esporádico de parámetros ambientales, la solución se muestra robusta. En aplicaciones con mayor cadencia de transmisión, será necesario optimizaciones adicionales a nivel de firmware.
+
+\subsection{7.2 Comparación con Estado del Arte}
+
+Resulta particularmente llamativo cómo nuestra propuesta se sitúa frente a trabajos previos. Mientras muchos enfoques se centran exclusivamente en reemplazar algoritmos sin considerar las restricciones reales de NB-IoT, el diseño híbrido logra un equilibrio más pragmático.
+
+Comparado con análisis exhaustivos de los desafíos post-cuánticos en ecosistemas 3GPP \cite{Althobaiti2020_Cybersecurity}, esta arquitectura avanza al implementar separaciones claras entre planos de control y datos, reduciendo el impacto operativo. Soluciones uniformes PQC tienden a generar overheads prohibitivos; nuestra estrategia selectiva mantiene el overhead de datos por debajo del 20\%, un valor competitivo.
+
+Respecto al trabajo de Do et al., compartimos la filosofía PQC-aware pero extendemos el enfoque incorporando elementos contextuales inspirados en lattices location-based. Esto aporta robustez adicional en escenarios remotos donde la predictibilidad espacial es baja. No obstante, cabe matizar que seguimos dependiendo en gran medida de la madurez actual de las implementaciones de ML-KEM y ML-DSA en hardware de bajo consumo. Futuras optimizaciones en librerías criptográficas probablemente reducirán aún más las brechas observadas.
+
+\subsection{7.3 Implicaciones para Estándares}
+
+Lejos de ser un ejercicio académico aislado, los hallazgos tienen repercusiones directas en la evolución de los estándares. La compatibilidad mantenida con procedimientos 3GPP actuales facilita una transición gradual, algo que los análisis de ciberseguridad post-cuántica vienen recomendando desde hace años \cite{Althobaiti2020_Cybersecurity}.
+
+Sería deseable que futuras releases de 3GPP incorporen Information Elements estandarizados para negociación de capacidades PQC durante el attachment. Esto evitaría soluciones propietarias fragmentadas y aceleraría la adopción industrial. Nuestra experiencia sugiere que definir perfiles específicos para NB-IoT (por ejemplo, ``PQC-Lite'' con parámetros reducidos) podría ser más efectivo que imponer algoritmos únicos.
+
+Persisten desafíos abiertos. La estandarización debe considerar no solo seguridad teórica sino también el impacto en baterías y capacidad de red en despliegues masivos. Ignorar estos factores podría generar resistencia por parte de operadores. La propuesta aquí presentada pretende contribuir precisamente a ese diálogo, ofreciendo evidencia concreta de que la protección cuántica no tiene por qué sacrificar drásticamente el rendimiento operativo.
+
+En última instancia, la discusión nos lleva a una conclusión cautelosa pero optimista: la migración hacia seguridad cuántica en NB-IoT es técnicamente factible hoy, aunque requiere inteligencia en el diseño y voluntad de adaptación en los estándares. Los trabajos futuros deberán profundizar en estas optimizaciones y explorar integración con tecnologías emergentes como QKD satelital para entornos especialmente hostiles.

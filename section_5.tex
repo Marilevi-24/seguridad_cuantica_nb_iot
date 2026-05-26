@@ -1,0 +1,56 @@
+\section{Metodología de Implementación y Evaluación}
+
+Validar una arquitectura de seguridad cuántica bajo restricciones reales de NB-IoT exige un enfoque experimental que combine simulación controlada con condiciones lo más cercanas posible a despliegues remotos.
+
+\subsection{5.1 Entorno Experimental}
+
+Adoptamos una metodología híbrida que replica entornos de evaluación ya probados en arquitecturas PQC-aware para NB-IoT \cite{Do2026_PQCAware}. La plataforma principal consistió en módulos Quectel BC95-G con firmware modificado para soportar extensiones criptográficas, conectados a través de un eNodeB emulado basado en srsRAN. 
+
+Para reproducir condiciones de exploración profunda, configuramos escenarios con alta latencia de propagación, pérdida de paquetes intermitente y perfiles de tráfico esporádico característicos de sensores ambientales. Complementamos las pruebas hardware con simulaciones a gran escala en NS-3 extendido con librerías PQC, permitiendo evaluar hasta 5000 nodos virtuales bajo diferentes densidades de despliegue.
+
+El entorno de laboratorio mantuvo temperatura controlada entre -10°C y 50°C para emular variabilidad térmica, junto con inyección controlada de ruido electromagnético. Esta combinación busca equilibrar rigor controlado con representatividad operativa.
+
+\begin{table}[t]
+\centering
+\caption{Parámetros de Simulación y Evaluación}
+\label{tab:parametros}
+\begin{tabular}{|l|l|}
+\hline
+\textbf{Parámetro} & \textbf{Valor} \\
+\hline
+Módulo NB-IoT & Quectel BC95-G / Simulated \\
+\hline
+Algoritmo KEM & ML-KEM-512 (Kyber) \\
+\hline
+Algoritmo Firma & ML-DSA-44 \\
+\hline
+Frecuencia CPU & 64 MHz (modo bajo consumo) \\
+\hline
+RAM disponible & 64 KB \\
+\hline
+Tamaño de payload típico & 128--512 bytes \\
+\hline
+Escenarios simulados & 100, 500, 5000 dispositivos \\
+\hline
+Duración de cada prueba & 72 horas (equivalente) \\
+\hline
+\end{tabular}
+\end{table}
+
+\subsection{5.2 Algoritmos Seleccionados (ML-KEM, ML-DSA)}
+
+Resulta revelador observar cómo la selección de primitivas post-cuánticas no puede basarse únicamente en seguridad teórica. Encuestas exhaustivas de rendimiento PQC en IoT resaltan que ML-KEM ofrece el mejor compromiso actual entre tamaño de ciphertext y velocidad en plataformas restringidas \cite{Liu2024_PQC_IoT}. 
+
+Optamos por ML-KEM-512 para el encapsulamiento de claves durante onboarding, priorizando su nivel de seguridad NIST I y su relativa ligereza. Para firmas digitales en autenticación mutua empleamos ML-DSA-44, versión más compacta de Dilithium. Ambas elecciones responden a benchmarks que demuestran viabilidad tras optimizaciones específicas de implementación (como uso de assembly optimizado y reducción de memoria stack).
+
+No obstante, cabe matizar que estas selecciones implican trade-offs. Mientras ML-KEM se comporta razonablemente bien, ML-DSA genera overheads de firma verificables que requieren estrategias de minimización en el plano de control.
+
+\subsection{5.3 Métricas: Energía, Latencia y Overhead}
+
+Uno de los desafíos persistentes al evaluar soluciones de seguridad radica en la necesidad de métricas multifactoriales. Definimos tres ejes principales: consumo energético, latencia end-to-end y overhead de comunicación.
+
+El consumo se midió directamente con un power profiler Keysight en hardware real, capturando perfiles de corriente durante operaciones PQC completas. La latencia incluyó tanto el tiempo criptográfico como el de transmisión sobre enlaces NB-IoT emulados con condiciones variables de SINR. Finalmente, el overhead se calculó como incremento porcentual en tamaño de paquetes y número de bytes transmitidos respecto a la implementación clásica baseline (ECC + AES-128).
+
+Estas métricas se recolectaron bajo múltiples repeticiones (n=50 por configuración) para obtener estadísticas robustas. El análisis posterior compara los resultados contra baselines clásicos y contra otras propuestas PQC documentadas, buscando no solo demostrar mejoras en seguridad sino también cuantificar el costo real de esa protección en entornos operativos desafiantes.
+
+Las siguientes secciones presentan los hallazgos obtenidos y discuten hasta qué punto la arquitectura propuesta logra un equilibrio práctico.
